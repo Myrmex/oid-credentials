@@ -80,4 +80,4 @@ Alternatively, just use an in-memory database.
 
 10.under `Controllers`, add `AuthorizationController.cs`.
 
-To secure your API, add an `[Authorize]` or `[Authorize(Roles = "some roles here")]` attribute to your controller or controller's method. Note: you should define the authentication scheme for this attribute, to avoid redirection to a login page: i.e. use `[Authorize(AuthenticationSchemes = OAuthValidationDefaults.AuthenticationScheme)]`. See <https://github.com/openiddict/openiddict-core/blob/dev/samples/Mvc.Server/Controllers/ResourceController.cs#L9>.
+**Note**: to secure your API, add an `[Authorize]` or `[Authorize(Roles = "some roles here")]` attribute to your controller or controller's method. Note: *you should define the authentication scheme for this attribute, to avoid redirection to a login page* (and thus a 404 from your client): i.e. use `[Authorize(AuthenticationSchemes = OAuthValidationDefaults.AuthenticationScheme)]`. See <https://github.com/openiddict/openiddict-core/blob/dev/samples/Mvc.Server/Controllers/ResourceController.cs#L9>.
