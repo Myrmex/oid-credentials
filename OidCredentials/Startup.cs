@@ -82,7 +82,7 @@ namespace OidCredentials
 
                     // During development, you can disable the HTTPS requirement.
                     options.DisableHttpsRequirement();
-                });
+                }).AddValidation();
 
             // Register the OpenIddict services.
             // Note: use the generic overload if you need

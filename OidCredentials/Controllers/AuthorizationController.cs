@@ -13,7 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using OidCredentials.Models;
 using OpenIddict.Abstractions;
-using OpenIddict.Core;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace OidCredentials.Controllers
@@ -155,7 +154,7 @@ namespace OidCredentials.Controllers
             ApplicationUser user = await _userManager.GetUserAsync(User);
 
             // to simplify, in this demo we just have 1 role for users: either admin or editor
-            string sRole = await _userManager.IsInRoleAsync(user, "admin")
+            string role = await _userManager.IsInRoleAsync(user, "admin")
                 ? "admin"
                 : "editor";
 
@@ -168,7 +167,7 @@ namespace OidCredentials.Controllers
                 name = user.UserName,
                 user.Email,
                 email_verified = user.EmailConfirmed,
-                roles = sRole
+                roles = role
             });
         }
     }

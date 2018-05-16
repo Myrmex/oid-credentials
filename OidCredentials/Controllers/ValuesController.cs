@@ -9,7 +9,8 @@ namespace OidCredentials.Controllers
     public class ValuesController : Controller
     {
         // GET api/values
-        [Authorize(AuthenticationSchemes = OAuthValidationDefaults.AuthenticationScheme)]
+        [Authorize]
+        // [Authorize(AuthenticationSchemes = OAuthValidationDefaults.AuthenticationScheme)]
         [HttpGet]
         public IEnumerable<string> Get()
         {
