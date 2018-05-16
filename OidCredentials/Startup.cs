@@ -58,32 +58,58 @@ namespace OidCredentials
                 options.ClaimsIdentity.RoleClaimType = OpenIdConnectConstants.Claims.Role;
             });
 
+            services.AddOpenIddict()
+                .AddCore(options =>
+                {
+                    options.UseDefaultModels();
+
+                    // Register the Entity Framework stores.
+                    options.AddEntityFrameworkCoreStores<ApplicationDbContext>();
+                })
+                .AddServer(options =>
+                {
+                    // Register the ASP.NET Core MVC binder used by OpenIddict.
+                    // Note: if you don't call this method, you won't be able to
+                    // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
+                    options.AddMvcBinders();
+
+                    // Enable the token endpoint (required to use the password flow).
+                    options.EnableTokenEndpoint("/connect/token");
+
+                    // Allow client applications to use the grant_type=password flow.
+                    options.AllowPasswordFlow();
+                    options.AllowRefreshTokenFlow();
+
+                    // During development, you can disable the HTTPS requirement.
+                    options.DisableHttpsRequirement();
+                });
+
             // Register the OpenIddict services.
             // Note: use the generic overload if you need
             // to replace the default OpenIddict entities.
-            services.AddOpenIddict(options =>
-            {
-                // Register the Entity Framework stores.
-                options.AddEntityFrameworkCoreStores<ApplicationDbContext>();
+            //services.AddOpenIddict(options =>
+            //{
+            //    // Register the Entity Framework stores.
+            //    options.AddEntityFrameworkCoreStores<ApplicationDbContext>();
 
-                // Register the ASP.NET Core MVC binder used by OpenIddict.
-                // Note: if you don't call this method, you won't be able to
-                // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
-                options.AddMvcBinders();
+            //    // Register the ASP.NET Core MVC binder used by OpenIddict.
+            //    // Note: if you don't call this method, you won't be able to
+            //    // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.
+            //    options.AddMvcBinders();
 
-                // Enable the token endpoint (required to use the password flow).
-                options.EnableTokenEndpoint("/connect/token");
+            //    // Enable the token endpoint (required to use the password flow).
+            //    options.EnableTokenEndpoint("/connect/token");
 
-                // Allow client applications to use the grant_type=password flow.
-                options.AllowPasswordFlow();
-                options.AllowRefreshTokenFlow();
+            //    // Allow client applications to use the grant_type=password flow.
+            //    options.AllowPasswordFlow();
+            //    options.AllowRefreshTokenFlow();
 
-                // During development, you can disable the HTTPS requirement.
-                options.DisableHttpsRequirement();
-            });
+            //    // During development, you can disable the HTTPS requirement.
+            //    options.DisableHttpsRequirement();
+            //});
 
-            services.AddAuthentication()
-                .AddOAuthValidation();
+            //services.AddAuthentication()
+            //    .AddOAuthValidation();
 
             // add my services
             // services.AddTransient<ISomeService, SomeServiceImpl>();

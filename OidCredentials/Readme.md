@@ -1,6 +1,6 @@
 ﻿# OpenIdDict Credentials Flow for WebAPI
 
-AspNet Core 2.0 - August 2017
+AspNet Core 2.0 - OpenIdDict 2.0.0-rc3-0964
 
 ## References
 
@@ -81,4 +81,3 @@ Alternatively, just use an in-memory database.
 10.under `Controllers`, add `AuthorizationController.cs`.
 
 To secure your API, add an `[Authorize]` or `[Authorize(Roles = "some roles here")]` attribute to your controller or controller's method. Note: you should define the authentication scheme for this attribute, to avoid redirection to a login page: i.e. use `[Authorize(AuthenticationSchemes = OAuthValidationDefaults.AuthenticationScheme)]`. See <https://github.com/openiddict/openiddict-core/blob/dev/samples/Mvc.Server/Controllers/ResourceController.cs#L9>.
-

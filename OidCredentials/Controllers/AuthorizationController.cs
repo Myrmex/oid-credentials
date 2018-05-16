@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using OidCredentials.Models;
+using OpenIddict.Abstractions;
 using OpenIddict.Core;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
