@@ -1,11 +1,13 @@
 ﻿# OpenIdDict Credentials Flow for WebAPI
 
-AspNet Core 2.0 - OpenIdDict 2.0.0-rc3-0964
+AspNet Core 2.1 - OpenIdDict 2.0.0-rc3-0996
 
 ## References
 
 - <https://github.com/openiddict>
 - <https://github.com/openiddict/openiddict-samples/tree/dev/samples/PasswordFlow>: official sample
+- <https://github.com/openiddict/openiddict-core/blob/dev/samples/>: up-to-date samples.
+- <https://github.com/openiddict/openiddict-core/issues/593>: latest changes.
 
 ## Quick Test
 
