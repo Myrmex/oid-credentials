@@ -65,8 +65,7 @@ namespace OidCredentials
 
                     // Register the Entity Framework stores.
                     options.UseEntityFrameworkCore()
-                        .UseDbContext<ApplicationDbContext>()
-                        .ReplaceDefaultEntities<long>();
+                        .UseDbContext<ApplicationDbContext>();
                     // options.AddEntityFrameworkCoreStores<ApplicationDbContext>();
                 })
                 .AddServer(options =>

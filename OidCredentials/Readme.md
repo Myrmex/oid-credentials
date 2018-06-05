@@ -52,11 +52,10 @@ install-package OpenIddict -pre
 install-package OpenIddict.EntityFrameworkCore -pre
 install-package OpenIddict.Mvc -pre
 install-package MailKit
-install-package NLog -pre
 install-package Swashbuckle.AspNetCore
 ```
 
-MailKit can be used for mailing, Swashbuckle.AspNetCore for Swagger, NLog for file-based logging.
+MailKit can be used for mailing, Swashbuckle.AspNetCore for Swagger.
 
 4.should you want to configure logging or other services, do it in `Program.cs`. Usually, the default configuration already does all what is typically required. See https://joonasw.net/view/aspnet-core-2-configuration-changes .
 
