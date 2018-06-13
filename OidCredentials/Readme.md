@@ -1,6 +1,6 @@
 ﻿# OpenIdDict Credentials Flow for WebAPI
 
-AspNet Core 2.1 - OpenIdDict 2.0.0-rc3-0996
+AspNet Core 2.1 - OpenIdDict 2.0.0-rc3-1006
 
 ## References
 
@@ -182,8 +182,4 @@ Apart from the fact that downgrading to .NET Core 2.0 is not an option in my rea
       Message=Specified key was too long; max key length is 3072 bytes
       Source=MySql.Data
 
-I found these relevant links:
-
-- <https://github.com/aspnet/EntityFrameworkCore/issues/11078> (using a variation of the MySql driver, Pomelo, which is not my case);
-- <https://bugs.mysql.com/bug.php?id=89855&thanks=sub>;
-- <https://github.com/aspnet/EntityFrameworkCore/issues/11078> (explains that the bug for both Oracle and Pomelo providers come from using internal code).
+The solution seems to be using an alternative driver from Pomelo: `Pomelo.EntityFrameworkCore.MySql 2.0.1` <https://github.com/openiddict/openiddict-core/issues/618#issuecomment-396240521>.
