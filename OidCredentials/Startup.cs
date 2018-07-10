@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OidCredentials.Models;
 using OidCredentials.Services;
+using OpenIddict.Abstractions;
 using Swashbuckle.AspNetCore.Swagger;
 
 namespace OidCredentials
@@ -70,6 +71,14 @@ namespace OidCredentials
                 })
                 .AddServer(options =>
                 {
+                    // https://github.com/openiddict/openiddict-core/issues/621
+                    options.RegisterScopes(OpenIdConnectConstants.Scopes.Email,
+                               OpenIdConnectConstants.Scopes.Profile,
+                               OpenIddictConstants.Scopes.Roles);
+
+                    // accept anonymous clients (i.e clients that don't send a client_id)
+                    options.AcceptAnonymousClients();
+
                     // Register the ASP.NET Core MVC binder used by OpenIddict.
                     // Note: if you don't call this method, you won't be able to
                     // bind OpenIdConnectRequest or OpenIdConnectResponse parameters.

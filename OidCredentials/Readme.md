@@ -1,6 +1,8 @@
 ﻿# OpenIdDict Credentials Flow for WebAPI
 
-AspNet Core 2.1 - OpenIdDict 2.0.0-rc3-1006
+AspNet Core 2.1 - OpenIdDict 2.0.0-rtm-1042
+
+This samples uses an SQL Server store. For MongoDB, see <https://github.com/Myrmex/oid-credentials-mongo>. For MySql, see at the bottom of this document.
 
 ## References
 
@@ -87,7 +89,8 @@ Alternatively, just use an in-memory database.
 
 To use MySql instead of SqlServer:
 
-1.`install-package MySql.Data.EntityFrameworkCore`
+1.`install-package MySql.Data.EntityFrameworkCore`.
+
 2.in `Startup.cs`, method `ConfigureServices`, replace the SQL Server line with this:
 
 ```cs
@@ -182,4 +185,4 @@ Apart from the fact that downgrading to .NET Core 2.0 is not an option in my rea
       Message=Specified key was too long; max key length is 3072 bytes
       Source=MySql.Data
 
-The solution seems to be using an alternative driver from Pomelo: `Pomelo.EntityFrameworkCore.MySql 2.0.1` <https://github.com/openiddict/openiddict-core/issues/618#issuecomment-396240521>.
+The solution might be using an alternative driver from Pomelo: `Pomelo.EntityFrameworkCore.MySql 2.0.1` <https://github.com/openiddict/openiddict-core/issues/618#issuecomment-396240521>, but this seems to be affected by the same issue. Bug file: <https://bugs.mysql.com/bug.php?id=89855>.
