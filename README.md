@@ -1,6 +1,16 @@
 # OpenIdDict Credentials Flow for WebAPI
 
-AspNet Core 2.1 - OpenIdDict 2.0.0-rtm-1042
+AspNet Core 2.1.3 - OpenIdDict 2.0.0-rtm-1090
+
+Note: change your connection string in `appsettings.json` if required. E.g. if you have a local SQL Server installed, use `Server=(local)\\SqlExpress;Database=oid;Trusted_Connection=True;MultipleActiveResultSets=true`. The connection string used in this sample refers to SQL Server in Docker. This allows playing with a real database without installing it.
+
+To run a MSSQL Docker container:
+
+	docker run --name=mssql -d -e ACCEPT_EULA=Y -e SA_PASSWORD=P4ss-W0rd! -p 1433:1433 microsoft/mssql-server-linux
+
+Once this container has been created, start it again with:
+
+	docker container start mssql
 
 This sample uses an SQL Server store. For MongoDB, see <https://github.com/Myrmex/oid-credentials-mongo>. For MySql, see at the bottom of this document.
 
@@ -178,11 +188,4 @@ Currently, this throws on startup, when initializing the database:
       at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
       at OidCredentials.Startup.Configure(IApplicationBuilder app, IHostingEnvironment env, IDatabaseInitializer databaseInitializer) in C:\Projects\Core20\Test\OidCredentials\OidCredentials\Startup.cs:line 125
 
-Apart from the fact that downgrading to .NET Core 2.0 is not an option in my real-world project, If I try I get this other exception:
-
-    MySql.Data.MySqlClient.MySqlException
-      HResult=0x80004005
-      Message=Specified key was too long; max key length is 3072 bytes
-      Source=MySql.Data
-
-The solution might be using an alternative driver from Pomelo: `Pomelo.EntityFrameworkCore.MySql 2.0.1` <https://github.com/openiddict/openiddict-core/issues/618#issuecomment-396240521>, but this seems to be affected by the same issue. Bug file: <https://bugs.mysql.com/bug.php?id=89855>.
+The solution might be using an alternative driver from Pomelo: `Pomelo.EntityFrameworkCore.MySql 2.0.1` <https://github.com/openiddict/openiddict-core/issues/618#issuecomment-396240521>. An Oracle solution does not seem to be available in a short time, if at all. Bug file: <https://bugs.mysql.com/bug.php?id=89855>.
