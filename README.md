@@ -1,6 +1,6 @@
 # OpenIdDict Credentials Flow for WebAPI
 
-AspNet Core 2.1.3 - OpenIdDict 2.0.0-rtm-1090
+AspNet Core 2.1.4 - OpenIdDict 2.0.0-rtm-1114
 
 Note: change your connection string in `appsettings.json` if required. E.g. if you have a local SQL Server installed, use `Server=(local)\\SqlExpress;Database=oid;Trusted_Connection=True;MultipleActiveResultSets=true`. The connection string used in this sample refers to SQL Server in Docker. This allows playing with a real database without installing it.
 
